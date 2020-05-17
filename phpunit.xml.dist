@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/codeigniter4/framework/system/Test/bootstrap.php"
+		backupGlobals="false"
+		colors="true"
+		convertErrorsToExceptions="true"
+		convertNoticesToExceptions="true"
+		convertWarningsToExceptions="true"
+		stopOnError="false"
+		stopOnFailure="false"
+		stopOnIncomplete="false"
+		stopOnSkipped="false">
+	<testsuites>
+		<testsuite name="app">
+			<directory>./tests</directory>
+		</testsuite>
+	</testsuites>
+
+	<filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+			<exclude>
+				<file>./src/auth/Auth.php</file>
+				<file>./src/auth/files/import.php</file>
+				<file>./src/auth/files/import_langs_to_sql.php</file>
+				<file>./src/auth/languages/en_GB.php</file>
+				<file>./src/auth/languages/ja_JP.php</file>
+				<file>./src/auth/languages/id_ID.php</file>
+				<file>./src/auth/languages/ru_RU.php</file>
+				<file>./src/Views/Forbidden.php</file>
+			</exclude>
+        </whitelist>
+    </filter>
+
+	<logging>
+		<log type="coverage-html" target="build/html"/>
+		<log type="coverage-clover" target="build/clover.xml"/>
+		<log type="coverage-php" target="build/coverage.serialized"/>
+		<log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
+		<log type="testdox-html" target="build/testdox.html"/>
+		<log type="testdox-text" target="build/testdox.txt"/>
+		<log type="junit" target="build/logfile.xml"/>
+	</logging>
+
+	<php>
+		<server name="app.baseURL" value="http://example.com/"/>
+		<server name="app.indexPage" value=""/>
+
+		<!-- Directory containing phpunit.xml -->
+		<const name="HOMEPATH" value="./"/>
+
+		<!-- Directory containing the Paths config file -->
+		<const name="CONFIGPATH" value="vendor/codeigniter4/framework/app/Config/"/>
+
+		<!-- Directory containing the front controller (index.php) -->
+		<const name="PUBLICPATH" value="./public/"/>
+		<const name="CI_DEBUG" value="1"/>
+
+		<!-- Database configuration -->
+		<env name="database.tests.hostname" value="localhost"/>
+		<env name="database.tests.database" value="codeflare"/>
+		<env name="database.tests.username" value="root"/>
+		<env name="database.tests.password" value=""/>
+		<env name="database.tests.DBPrefix" value=""/>
+		<env name="database.tests.DBDriver" value="MySQLi"/>
+<!--	<env name="database.tests.DBPrefix" value="tests_"/>	 -->
+		<!-- <env name="database.tests.database" value=":memory:"/>
+		<env name="database.tests.DBDriver" value="SQLite3"/> -->
+
+		<env name="email.protocol" value="smtp"/>
+		<env name="email.SMTPHost" value=""/>
+		<env name="email.SMTPUser" value=""/>
+		<env name="email.SMTPPass" value=""/>
+		<env name="email.SMTPPort" value="587"/>
+		<env name="email.mailType" value="html"/>
+	</php>
+</phpunit>

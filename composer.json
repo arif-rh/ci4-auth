@@ -1,0 +1,35 @@
+{
+    "name": "arif-rh/ci4-auth",
+    "description": "PHPAuth for CodeIgniter 4",
+    "homepage": "https://github.com/arif-rh/ci4-auth",
+    "keywords": ["auth", "codeigniter 4 auth", "authentication", "phpauth"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arif Rahman Hakim",
+            "email": "arifrahmanhakim.net@gmail.com"
+        }
+	],
+    "require": {
+		"arif-rh/ci4-dynamic-model": "^0.3",
+		"bjeavons/zxcvbn-php": "^1.0"
+    },
+    "require-dev": {
+		"codeigniter4/framework": "^4.0",
+		"phpunit/phpunit": "8.5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Arifrh\\Auth\\": "src"
+        }
+    },
+	"autoload-dev": {
+		"psr-4": {
+			"Arifrh\\AuthTests\\": "tests"
+		}
+	},
+	"scripts": {
+        "test": "phpunit",
+        "testdox": "phpunit --testdox"
+	}
+}
