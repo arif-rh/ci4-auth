@@ -1479,7 +1479,7 @@ class Auth
 			if (!$mail->send())
 			{
 				// @codeCoverageIgnoreStart
-				$return['message'] = lang('Auth.' . $type . '_email_not_sent.');
+				$return['message'] = lang('Auth.' . $type . '_email_not_sent');
 				return $return;
 				// @codeCoverageIgnoreEnd
 			}
@@ -1489,7 +1489,7 @@ class Auth
 		// @codeCoverageIgnoreStart
 		catch (\Exception $e)
 		{
-			$return['message'] = lang('Auth.' . $type . '_email_not_sent.');
+			$return['message'] = lang('Auth.' . $type . '_email_not_sent');
 		}
 		// @codeCoverageIgnoreEnd
 		return $return;

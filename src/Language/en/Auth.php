@@ -66,11 +66,11 @@ return [
 	'activation_exists' => 'An activation email has already been sent.',
 
 	'email_activation_subject' => '{0} - Activate account',
-	'email_activation_body'    => "Hello,<br/><br/> To be able to log in to your account you first need to activate your account by clicking on the following link : <strong><a href={0}{1}/{2}'>{0}{1}/{2}</a></strong><br/><br/> You then need to use the following activation key: <strong>{2}</strong><br/><br/> If you did not sign up on {0} recently then this message was sent in error, please ignore it.",
+	'email_activation_body'    => "Hello,<br/><br/> To be able to log in to your account you first need to activate your account by clicking on the following link : <strong><a href={0}{1}/{2}>{0}{1}/{2}</a></strong><br/><br/> You then need to use the following activation key: <strong>{2}</strong><br/><br/> If you did not sign up on {0} recently then this message was sent in error, please ignore it.",
 	'email_activation_altbody' => 'Hello, ' . '\n\n' . 'To be able to log in to your account you first need to activate your account by visiting the following link :' . '\n{0}{1}/{2}\n\n' . 'You then need to use the following activation key: {2}' . '\n\n' . 'If you did not sign up on {0} recently then this message was sent in error, please ignore it.',
 
 	'email_reset_subject' => '{0} - Password reset request',
-	'email_reset_body'    => "Hello,<br/><br/>To reset your password click the following link :<br/><br/><strong><a href={0}{1}/{2}'>{0}{1}/{2}</a></strong><br/><br/>You then need to use the following password reset key: <strong>{2}</strong><br/><br/>If you did not request a password reset key on {0} recently then this message was sent in error, please ignore it.",
+	'email_reset_body'    => "Hello,<br/><br/>To reset your password click the following link :<br/><br/><strong><a href={0}{1}/{2}>{0}{1}/{2}</a></strong><br/><br/>You then need to use the following password reset key: <strong>{2}</strong><br/><br/>If you did not request a password reset key on {0} recently then this message was sent in error, please ignore it.",
 	'email_reset_altbody' => 'Hello, ' . '\n\n' . 'To reset your password please visiting the following link :' . '\n{0}{1}/{2}\n\n' . 'You then need to use the following password reset key: {2}' . '\n\n' . 'If you did not request a password reset key on {0} recently then this message was sent in error, please ignore it.',
 
 	'account_deleted'   => 'Account deleted successfully.',
