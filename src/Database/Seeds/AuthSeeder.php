@@ -46,7 +46,7 @@ class AuthSeeder extends \CodeIgniter\Database\Seeder
 
 		$this->db->query($sql);
 
-		$this->db->query("INSERT INTO " . $config->userGroupTable . " (`group`, `description`) VALUES ('Super Admin', 'Super Admin'), ('Admin', 'Admin), ('User', 'User');");
+		$this->db->query("INSERT INTO " . $config->userGroupTable . " (`group`, `description`) VALUES ('Super Admin', 'Super Admin'), ('Admin', 'Admin'), ('User', 'User');");
 
 		$this->db->query("INSERT INTO " . $config->userRoleTable . " (`group_id`, `role`, `description`) VALUES (1, 'Administrator', 'Administrator'), (2, 'Web Admin', 'Web Admin'), (3, 'User', 'User');");
 	}
