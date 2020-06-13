@@ -68,6 +68,11 @@ class AuthMigration extends \CodeIgniter\Database\Migration
 				'type'       => 'VARCHAR',
 				'constraint' => '100',
 			],
+			'description'  => [
+				'type'       => 'VARCHAR',
+				'constraint' => '200',
+				'null'       => true,
+			],
 			'active' => [
 				'type'       => 'TINYINT',
 				'constraint' => 1,
@@ -95,6 +100,11 @@ class AuthMigration extends \CodeIgniter\Database\Migration
 			'role'     => [
 				'type'       => 'VARCHAR',
 				'constraint' => '100',
+			],
+			'description'  => [
+				'type'       => 'VARCHAR',
+				'constraint' => '200',
+				'null'       => true,
 			],
 			'active'   => [
 				'type'       => 'TINYINT',
@@ -127,10 +137,12 @@ class AuthMigration extends \CodeIgniter\Database\Migration
 			'fullname'   => [
 				'type'       => 'VARCHAR',
 				'constraint' => '100',
+				'null'       => true,
 			],
 			'username'   => [
 				'type'       => 'VARCHAR',
 				'constraint' => '40',
+				'null'       => true,
 			],
 			'group_id'   => [
 				'type'       => 'SMALLINT',
@@ -147,12 +159,15 @@ class AuthMigration extends \CodeIgniter\Database\Migration
 			],
 			'created_at' => [
 				'type' => 'DATETIME',
+				'null'       => true,
 			],
 			'updated_at' => [
 				'type'  => 'DATETIME',
+				'null'       => true,
 			],
 			'deleted_at' => [
 				'type'  => 'DATETIME',
+				'null'       => true,
 			],
 		]);
 
