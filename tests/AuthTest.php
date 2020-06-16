@@ -127,12 +127,6 @@ final class AuthTest extends TestCase
 	{
 		$this->cleanTestdata();
 
-		// login without activation, account directly activated and can do login
-		$return = $this->auth->register($this->email2, $this->password, $this->password, ['fullname' => 'Arif RH'], false);
-
-		$this->assertFalse($return['error']);
-		$this->assertSame($return['message'], lang('Auth.register_success_emailmessage_suppressed'));
-
 		$userData = [
 			'fullname' => $this->fullname,
 			'username' => $this->username,
@@ -140,6 +134,12 @@ final class AuthTest extends TestCase
 			'role_id'  => 1
 		];
 
+		// login without activation, account directly activated and can do login
+		$return = $this->auth->register($this->email2, $this->password, $this->password, $userData, false);
+
+		$this->assertFalse($return['error']);
+		$this->assertSame($return['message'], lang('Auth.register_success_emailmessage_suppressed'));
+		
 		// register account with email activation
 		$return = $this->auth->register($this->email, $this->password, $this->password, $userData);
 
@@ -231,6 +231,12 @@ final class AuthTest extends TestCase
 		$user = $this->auth->getCurrentUser();
 
 		$this->assertSame($this->email2, $user['email']);
+
+		$this->clearAttemptTest();
+
+		// login with correct password for active account using loginID
+		$return = $newAuth->loginByLoginID($this->username, $this->password);
+		$this->assertFalse($return['error']);
 	}
 
 	public function testActivateAccount()

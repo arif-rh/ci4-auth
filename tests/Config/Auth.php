@@ -14,4 +14,6 @@ class Auth extends \Arifrh\Auth\Config\Auth
 	 * @var int $bcryptCost
 	 */
 	public $bcryptCost = 12;
+
+	public $enableLoginID = true;
 }

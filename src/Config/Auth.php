@@ -91,4 +91,20 @@ class Auth extends \CodeIgniter\Config\BaseConfig
 	 * @var int $bcryptCost
 	 */
 	public $bcryptCost = 10;
+
+	/**
+	 * By default, login is using email address
+	 * This setting will allow to login using LoginID
+	 *
+	 * @var boolean $enableLoginID
+	 */
+	public $enableLoginID = false;
+
+	/**
+	 * If $enableLoginID set to true, then must set this loginID
+	 * the real loginID can be username, loginID, userID, etc.
+	 *
+	 * @var string $loginID
+	 */
+	public $loginID = 'username';
 }

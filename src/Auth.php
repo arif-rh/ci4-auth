@@ -213,6 +213,41 @@ class Auth
 	}
 
 	/**
+	 * Logs a user in by LoginID
+	 *
+	 * @param string  $loginID
+	 * @param string  $password
+	 * @param boolean $remember
+	 *
+	 * @return array[
+	 *  error: boolean,
+	 *  message: string
+	 * ]
+	 */
+	public function loginByLoginID(string $loginID, string $password, bool $remember = false)
+	{
+		$return['error'] = true;
+
+		if ($this->config->enableLoginID)
+		{
+			$user = $this->getUserByLoginID($loginID);
+
+			if (isset($user['email']))
+			{
+				$email = $user['email'];
+
+				return $this->login($email, $password, $remember);
+			}
+		}
+
+		$return['message'] = lang("Auth.account_not_found");
+
+		$this->addAttempt('Login::' . $return['message']);
+
+		return $return;
+	}
+
+	/**
 	 * Creates a new user, adds them to database
 	 *
 	 * @param string $email
@@ -1536,6 +1571,34 @@ class Auth
 		return $data ?? false;
 	}
 
+	/**
+	 * Gets user data for a loginID
+	 *
+	 * @param string|int  $loginID
+	 * @param bool        $withPassword
+	 *
+	 * @return mixed[]
+	 */
+	public function getUserByLoginID($loginID, bool $withPassword = false)
+	{
+		$userTable = DB::table($this->config->userTable);
+
+		$data = $userTable->asArray()->findOneBy([
+			$this->config->loginID => $loginID
+		]);
+
+		if (is_array($data))
+		{
+			$data['uid'] = $data['id'];
+
+			if (! $withPassword)
+			{
+				unset($data['password']);
+			}
+		}
+
+		return $data ?? false;
+	}
 
 	/**
 	 * Gets UID for a given email address, return int
@@ -1570,7 +1633,7 @@ class Auth
 	 */
 	public function getCurrentSessionHash()
 	{
-		return isset($_COOKIE[$this->cookieConfig->cookiePrefix . $this->config->cookieName]) ? $_COOKIE[$this->cookieConfig->cookiePrefix . $this->config->cookieName] : false;
+		return isset($_COOKIE[$this->cookieConfig->cookiePrefix . $this->config->cookieName]) ? $_COOKIE[$this->cookieConfig->cookiePrefix . $this->config->cookieName] : '';
 	}
 
 	/**
@@ -1603,7 +1666,7 @@ class Auth
 			$this->currentUser = $this->getUser($uid);
 		}
 
-	    return $this->currentUser ?? false;
+		return $this->currentUser ?? false;
 	}
 
 	/**
@@ -1617,7 +1680,7 @@ class Auth
 
 		$roles = $roleTable->where('active', 1)->findAll();
 
-	    return array_key_value($roles, ['id' => 'role']);
+		return array_key_value($roles, ['id' => 'role']);
 	}
 
 	/**
@@ -1627,11 +1690,11 @@ class Auth
 	 */
 	public function getGroups()
 	{
-	    $groupTable = DB::table($this->config->userGroupTable);
+		$groupTable = DB::table($this->config->userGroupTable);
 
 		$groups = $groupTable->where('active', 1)->findAll();
 
-	    return array_key_value($groups, ['id' => 'group']);
+		return array_key_value($groups, ['id' => 'group']);
 	}
 
 	/**
@@ -1645,7 +1708,7 @@ class Auth
 	{
 		$hasRole = false;
 
-	    $user = $this->getCurrentUser();
+		$user = $this->getCurrentUser();
 
 		if ($user)
 		{
@@ -1789,8 +1852,8 @@ class Auth
      */
 	public function cron()
 	{
-	    $this->deleteExpiredAttempts();
-	    $this->deleteExpiredSessions();
-	    $this->deleteExpiredRequests();
+		$this->deleteExpiredAttempts();
+		$this->deleteExpiredSessions();
+		$this->deleteExpiredRequests();
 	}
 }
