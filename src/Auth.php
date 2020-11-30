@@ -1498,7 +1498,6 @@ class Auth
 			//Recipients
 			$mail->setFrom($this->config->siteEmail, $this->config->siteName);
 			$mail->setTo($email);
-			$mail->setBCC('mail@diginiq.net');
 
 			if ($type == 'activation')
 			{
