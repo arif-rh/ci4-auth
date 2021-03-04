@@ -581,4 +581,15 @@ final class AuthTest extends TestCase
 		$this->assertFalse($return['error']);
 		$this->assertSame($return['message'], lang('Auth.account_deleted'));
 	}
+
+	public function testGenerateStrongPassword()
+	{
+		$weakPassword = 'Admin123';
+
+		$this->assertFalse(\Arifrh\Auth\is_strong_password($weakPassword));
+
+		$strongPassword = \Arifrh\Auth\generate_strong_password();
+
+		$this->assertTrue(\Arifrh\Auth\is_strong_password($strongPassword));
+	}
 }
