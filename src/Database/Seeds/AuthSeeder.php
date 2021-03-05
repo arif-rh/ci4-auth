@@ -14,7 +14,7 @@ class AuthSeeder extends \CodeIgniter\Database\Seeder
 		$config = \CodeIgniter\Config\Config::get('Auth');
 
 		$sql = "
-		INSERT INTO " . $config->configTable . " (`name`, `value`) VALUES
+		INSERT INTO " . $this->db->prefixTable($config->configTable) . " (`name`, `value`) VALUES
 			('site_name', 'App Starter Pro'),
 			('site_email',  'mail@diginiq.net'),
 			('site_key',  'fghuior.)/!/jdUkd8s2!7HVHG7777ghg'),
@@ -46,8 +46,8 @@ class AuthSeeder extends \CodeIgniter\Database\Seeder
 
 		$this->db->query($sql);
 
-		$this->db->query("INSERT INTO " . $config->userGroupTable . " (`group`, `description`) VALUES ('Super Admin', 'Super Admin'), ('Admin', 'Admin'), ('User', 'User');");
+		$this->db->query("INSERT INTO " . $this->db->prefixTable($config->userGroupTable) . " (`group`, `description`) VALUES ('Super Admin', 'Super Admin'), ('Admin', 'Admin'), ('User', 'User');");
 
-		$this->db->query("INSERT INTO " . $config->userRoleTable . " (`group_id`, `role`, `description`) VALUES (1, 'Administrator', 'Administrator'), (2, 'Web Admin', 'Web Admin'), (3, 'User', 'User');");
+		$this->db->query("INSERT INTO " . $this->db->prefixTable($config->userRoleTable) . " (`group_id`, `role`, `description`) VALUES (1, 'Administrator', 'Administrator'), (2, 'Web Admin', 'Web Admin'), (3, 'User', 'User');");
 	}
 }

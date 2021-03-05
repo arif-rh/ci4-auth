@@ -17,7 +17,7 @@ class UserSeeder extends \CodeIgniter\Database\Seeder
 
 		$password = password_hash($userPassword, PASSWORD_BCRYPT, ['cost' => $config->bcryptCost]);
 		$sql = "
-		INSERT INTO " . $config->userTable . " (`email`, `password`, `group_id`, `role_id`, `active`) VALUES
+		INSERT INTO " . $this->db->prefixTable($config->userTable) . " (`email`, `password`, `group_id`, `role_id`, `active`) VALUES
 			('arifrahmanhakim.net@gmail.com', '" . $password . "', 1, 1, 1);
 		";
 
