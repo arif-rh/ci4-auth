@@ -103,7 +103,7 @@ class Auth
 		}
 		else
 		{
-			$this->config = \CodeIgniter\Config\Config::get('Auth');
+			$this->config = \CodeIgniter\Config\Factories::config('Auth');
 		}
 
 		$this->cookieConfig = config(\Config\App::class);

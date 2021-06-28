@@ -27,7 +27,7 @@ class AuthMigration extends \CodeIgniter\Database\Migration
 	 */
 	public function up()
 	{
-		$config = \CodeIgniter\Config\Config::get('Auth');
+		$config = \CodeIgniter\Config\Factories::config('Auth');
 
 		// Config Table
 		$this->forge->addField([
@@ -310,7 +310,7 @@ class AuthMigration extends \CodeIgniter\Database\Migration
 	 */
 	public function down()
 	{
-		$config = \CodeIgniter\Config\Config::get('Auth');
+		$config = \CodeIgniter\Config\Factories::config('Auth');
 
 		$this->forge->dropTable($config->configTable);
 		$this->forge->dropTable($config->authAttemptTable);

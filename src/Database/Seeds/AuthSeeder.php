@@ -11,7 +11,7 @@ class AuthSeeder extends \CodeIgniter\Database\Seeder
 	 */
 	public function run()
 	{
-		$config = \CodeIgniter\Config\Config::get('Auth');
+		$config = \CodeIgniter\Config\Factories::config('Auth');
 
 		$sql = "
 		INSERT INTO " . $this->db->prefixTable($config->configTable) . " (`name`, `value`) VALUES

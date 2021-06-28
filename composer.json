@@ -15,7 +15,7 @@
 		"bjeavons/zxcvbn-php": "^1.0"
     },
     "require-dev": {
-		"codeigniter4/framework": "^4.0",
+		"codeigniter4/framework": "^4.1",
 		"phpunit/phpunit": "8.5.*"
     },
     "autoload": {
